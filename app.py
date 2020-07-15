@@ -7,9 +7,6 @@ app = Flask(__name__)
 r = requests.get(
         'https://api.github.com/search/repositories?q=created:<=2020-07-13&sort=stars&order=desc&per_page=100')
 data = r.json()
-#items = data['items']
-#data1 = data['items']
-#data2 = json.loads(data1)
 
 @app.route('/', methods=['GET'])
 def index():
@@ -40,3 +37,7 @@ def repos_list_per_lang():
          reposdict.update(repos)
 
     return '<h1></br>List of repos using each language is : </br></h1>' + json.dumps(reposdict)
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
+
